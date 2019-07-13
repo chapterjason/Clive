@@ -1,0 +1,6 @@
+# IDE
+.idea/
+
+# Output
+cmake-build-debug/
+cmake-build-release/

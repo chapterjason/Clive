@@ -1,0 +1,6 @@
+[submodule "3rd_party/Box2D"]
+	path = 3rd_party/Box2D
+	url = https://github.com/tobanteGaming/Box2D-cmake.git
+[submodule "3rd_party/SFML"]
+	path = 3rd_party/SFML
+	url = git@github.com:SFML/SFML.git
