@@ -4,3 +4,6 @@
 [submodule "3rd_party/SFML"]
 	path = 3rd_party/SFML
 	url = git@github.com:SFML/SFML.git
+[submodule "3rd_party/Hypodermic"]
+	path = 3rd_party/Hypodermic
+	url = https://github.com/chapterjason/Hypodermic-cmake.git
