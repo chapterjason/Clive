@@ -30,6 +30,7 @@ set(SFML_STATIC_LIBRARIES TRUE)
 # Box2D
 add_subdirectory(3rd_party/Box2D)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Config.h.in src/Core/Logger/LoggerInterface.hpp src/Core/Logger/LogLevel.hpp src/Core/Logger/Logger.cpp src/Core/Logger/Logger.hpp src/Core/Logger/LogHandlerInterface.hpp src/Core/Logger/ConsoleLogHandler.cpp src/Core/Logger/ConsoleLogHandler.hpp)
+
+add_executable(${PROJECT_NAME} src/main.cpp src/Config.h.in src/Core/Logger/LoggerInterface.hpp src/Core/Logger/LogLevel.hpp src/Core/Logger/Logger.cpp src/Core/Logger/Logger.hpp src/Core/Logger/LogHandlerInterface.hpp src/Core/Logger/ConsoleLogHandler.cpp src/Core/Logger/ConsoleLogHandler.hpp src/Core/DepndencyInjection/Container.cpp src/Core/DepndencyInjection/Container.hpp)
 
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-audio sfml-system sfml-window sfml-network tobanteGaming::Box2D)
