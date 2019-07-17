@@ -2,13 +2,15 @@
 #include "Core/Logger/LoggerInterface.hpp"
 #include "Core/Logger/Logger.hpp"
 #include "Core/Logger/ConsoleLogHandler.hpp"
-#include <Hypodermic.hpp>
+#include <Hypodermic.h>
+#include <ContainerBuilder.h>
 
 using namespace Clive::Core;
+using namespace Hypodermic;
 
 int main() {
 
-    Hypodermic::ContainerBuilder builder;
+    ContainerBuilder builder;
 
     builder.registerType<Clive::Core::Logger>().as<LoggerInterface>();
     builder.registerType<ConsoleLogHandler>().as<LogHandlerInterface>();
