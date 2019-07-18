@@ -6,15 +6,18 @@
 #define CLIVE_CONSOLELOGHANDLER_HPP
 
 #include "LogHandlerInterface.hpp"
+#include "../Format/TimeFormatInterface.hpp"
+#include <memory>
 
 namespace Clive::Core {
     class ConsoleLogHandler : public LogHandlerInterface {
-
         protected:
-            static std::string getTimeAsString();
+            std::shared_ptr<TimeFormatInterface> timeFormat;
 
         public:
-            void log(LogLevel level, std::string message) override;
+            explicit ConsoleLogHandler(const std::shared_ptr<TimeFormatInterface> &timeFormat);
+
+            void log(LogLevel level, std::string const &message) override;
     };
 }
 #endif //CLIVE_CONSOLELOGHANDLER_HPP

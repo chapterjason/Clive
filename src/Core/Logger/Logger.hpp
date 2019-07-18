@@ -7,37 +7,43 @@
 
 #include "LoggerInterface.hpp"
 #include <map>
+#include <memory>
+#include <vector>
 
 namespace Clive::Core {
     class Logger : public LoggerInterface {
         protected:
-            std::map<std::string, LogHandlerInterface *> *handlers;
+            std::vector<std::shared_ptr<LogHandlerInterface>> handlers;
 
-            LogLevel verbosity;
+            LogLevel verbosity = LogLevel::Debug;
 
         public:
 
-            Logger();
+            explicit Logger(const std::vector<std::shared_ptr<LogHandlerInterface> > &handlers);
 
-            ~Logger() override;
+            void addHandler(const std::shared_ptr<LogHandlerInterface> &handler) override;
 
-            void addHandler(std::string name, LogHandlerInterface *handler) override;
+            void removeHandler(const std::shared_ptr<LogHandlerInterface> &handler) override;
 
-            void removeHandler(std::string name) override;
+            void fatal(std::string const &message) override;
 
-            void fatal(std::string message) override;
+            void error(std::string const &message) override;
 
-            void error(std::string message) override;
+            void warn(std::string const &message) override;
 
-            void warn(std::string message) override;
+            void info(std::string const &message) override;
 
-            void info(std::string message) override;
+            void debug(std::string const &message) override;
 
-            void debug(std::string message) override;
+            void debug(int const &number) override;
 
-            void trace(std::string message) override;
+            void debug(float const &number) override;
 
-            void log(LogLevel level, std::string message) override;
+            void debug(double const &number) override;
+
+            void trace(std::string const &message) override;
+
+            void log(LogLevel level, std::string const &message) override;
 
             void setVerbosity(LogLevel level) override;
 

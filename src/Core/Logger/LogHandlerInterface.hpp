@@ -14,9 +14,11 @@ namespace Clive::Core {
             virtual ~LogHandlerInterface() = default;
 
             /**
-             * Base log method
+             * Log method that will receive the message from the LoggerInterface
+             * @param level The verbosity level
+             * @param message The message to log
              */
-            virtual void log(LogLevel level, std::string message) = 0;
+            virtual void log(LogLevel level, std::string const &message) = 0;
     };
 }
 

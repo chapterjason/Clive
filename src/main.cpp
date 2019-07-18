@@ -1,35 +1,16 @@
-#include <iostream>
-#include "Core/Logger/LoggerInterface.hpp"
-#include "Core/Logger/Logger.hpp"
-#include "Core/Logger/ConsoleLogHandler.hpp"
-#include <Hypodermic.h>
-#include <ContainerBuilder.h>
+
+#include <memory>
+#include "Application/AppKernel.hpp"
 
 using namespace Clive::Core;
-using namespace Hypodermic;
+using namespace Clive::Application;
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    ContainerBuilder builder;
+    std::shared_ptr<KernelInterface> kernel = std::make_shared<AppKernel>();
 
-    builder.registerType<Clive::Core::Logger>().as<LoggerInterface>();
-    builder.registerType<ConsoleLogHandler>().as<LogHandlerInterface>();
-
-    auto container = builder.build();
-
-//    LoggerInterface *logger;
-//    LogHandlerInterface *logHandler;
-//
-//    logger = new Logger();
-//    logHandler = new ConsoleLogHandler();
-//
-//    logger->addHandler("default", logHandler);
-//
-//    logger->setVerbosity(LogLevel::Fatal);
-//
-//    logger->info("test");
-//
-//    delete logger;
+    kernel->bootstrap();
+    kernel->execute(argc, argv);
 
     return 0;
 }

@@ -31,6 +31,9 @@ add_subdirectory(3rd_party/Hypodermic)
 # Box2D
 add_subdirectory(3rd_party/Box2D)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Config.h.in src/Core/Logger/LoggerInterface.hpp src/Core/Logger/LogLevel.hpp src/Core/Logger/Logger.cpp src/Core/Logger/Logger.hpp src/Core/Logger/LogHandlerInterface.hpp src/Core/Logger/ConsoleLogHandler.cpp src/Core/Logger/ConsoleLogHandler.hpp)
+# YAML
+add_subdirectory(3rd_party/YAML)
 
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-audio sfml-system sfml-window sfml-network tobanteGaming::Box2D Hypodermic)
+add_executable(${PROJECT_NAME} src/main.cpp src/Config.h.in src/Core/Logger/LoggerInterface.hpp src/Core/Logger/LogLevel.hpp src/Core/Logger/Logger.cpp src/Core/Logger/Logger.hpp src/Core/Logger/LogHandlerInterface.hpp src/Core/Logger/ConsoleLogHandler.cpp src/Core/Logger/ConsoleLogHandler.hpp src/Core/Logger/FileLogHandler.cpp src/Core/Logger/FileLogHandler.hpp src/Core/Format/TimeFormatInterface.hpp src/Core/Format/TimeFormat.cpp src/Core/Format/TimeFormat.hpp src/Core/Config/ConfigManagerInterface.hpp src/Core/Config/ConfigManager.cpp src/Core/Config/ConfigManager.hpp src/Core/Format/TimeFormatConfig.hpp src/Core/Logger/FileLogHandlerConfig.hpp src/Application/GameApp.cpp src/Application/GameApp.hpp src/Game/State/StateInterface.hpp src/Application/State/GameState.cpp src/Application/State/GameState.hpp src/Game/State/StateManagerInterface.hpp src/Game/State/StateManager.cpp src/Game/State/StateManager.hpp src/Core/Kernel/KernelInterface.hpp src/Core/Kernel/Kernel.cpp src/Core/Kernel/Kernel.hpp src/Application/AppKernel.cpp src/Application/AppKernel.hpp)
+
+target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-audio sfml-system sfml-window sfml-network tobanteGaming::Box2D Hypodermic yaml-cpp)
