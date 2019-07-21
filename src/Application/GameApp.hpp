@@ -15,46 +15,25 @@
 #include <SFML/Graphics.hpp>
 #include "../Core/Logger/LoggerInterface.hpp"
 #include "../Game/State/StateManagerInterface.hpp"
+#include "../Game/Loop/ExpertLoop.hpp"
 
 using namespace Clive::Core;
 using namespace Clive::Game;
 
 namespace Clive::Application {
-    class GameApp {
-
+    class GameApp : public ExpertLoop {
         protected:
             std::shared_ptr<StateManagerInterface> stateManager;
 
-            std::shared_ptr<sf::RenderWindow> window;
-
         public:
-
             GameApp(const std::shared_ptr<sf::RenderWindow> &window,
                     const std::shared_ptr<StateManagerInterface> &stateManager);
 
-            void input();
+            void input() override;
 
-            void update(double delta);
+            void update(double delta) override;
 
-            void draw();
-
-            static double getTime() {
-                auto time = std::chrono::high_resolution_clock::now().time_since_epoch();
-                return std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() / 1000000000.0;
-            }
-
-            // @see http://entropyinteractive.com/2011/02/game-engine-design-the-game-loop/
-            // @todo implement GameLoopInterface
-            // @todo implement GameLoop
-            // @todo implement FramerateLimitedGameLoop
-            // @todo implement AdvancedGameLoop
-            // @todo implement ExpertGameLoop
-
-            /**
-             * Begin the game loop
-             * @param delta time between logic updates (in seconds)
-             */
-            void run(double delta);
+            void draw() override;
 
     };
 }
